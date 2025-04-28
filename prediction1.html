@@ -1,0 +1,71 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Presentable</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<link rel="stylesheet" href="static/layout/styles/layout.css" type="text/css" />
+<script type="text/javascript" src="static/layout/scripts/jquery.min.js"></script>
+<script type="text/javascript" src="static/layout/scripts/jquery.innerfade.js"></script>
+</head>
+<body id="top">
+<div class="wrapper col1">
+  <div id="header">
+    <div id="logo">
+        <h1>{{name}}</h1>
+    </div>
+
+    <div id="topnav">
+      <ul>
+        <li><a href="/etrading">etrading</a></li>
+        <li  class="active"   ><a href="/upload">upload image </a></li>
+        <li ><a href="/">Home</a></li>
+      </ul>
+    </div>
+    <br class="clear" />
+  </div>
+</div>
+<div class="wrapper col2">
+  <div id="intro">
+    <div class="fl_left">
+      <h1>BENIFITS&hellip;</h1>
+      <h1>{{ plant.name }}</h1>
+
+		<h2>Medicinal Content:</h2>
+		<p>{{ plant.medicinal_content }}</p>
+
+		<h2>Disease Cured:</h2>
+		<p>{{ plant.disease_cured }}</p>
+
+		<h2>Age Restriction:</h2>
+		<p>{{ plant.age_restriction }}</p>
+
+		<h2>Gender Restriction:</h2>
+		<p>{{ plant.gender_restriction }}</p>
+
+		<h2>Pregnancy Restriction:</h2>
+		<p>{{ plant.pregnancy_restriction }}</p>
+
+		<h2>Mode of Use:</h2>
+		<p>{{ plant.mode_of_use }}</p>
+
+		<h2>Doses per Day:</h2>
+		<p>{{ plant.doses_per_day }}</p>
+		
+    </div>
+    <div class="fl_right">
+      <ul id="rotation">
+        <li><a href="#"><img src="static/input.jpg" alt="" /></a></li>
+        
+      </ul>
+    </div>
+    <br class="clear" />
+  </div>
+</div>
+<!-- ####################################################################################################### -->
+
+<!-- ####################################################################################################### -->
+
+
+</body>
+</html>

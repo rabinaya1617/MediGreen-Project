@@ -1,0 +1,62 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!--
+Template Name: Presentable
+Author: <a href="http://www.os-templates.com/">OS Templates</a>
+Author URI: http://www.os-templates.com/
+Licence: Free to use under our free template licence terms
+Licence URI: http://www.os-templates.com/template-terms
+-->
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Presentable</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<link rel="stylesheet" href="static/layout/styles/layout.css" type="text/css" />
+<script type="text/javascript" src="static/layout/scripts/jquery.min.js"></script>
+<script type="text/javascript" src="static/layout/scripts/jquery.innerfade.js"></script>
+</head>
+<body id="top">
+<div class="wrapper col1">
+  <div id="header">
+    <div id="logo">
+      <h1><a href="index.html">Medicinal plants</a></h1>
+      <p>Now you can check your plants </p>
+    </div>
+
+    <div id="topnav">
+      <ul>
+        <li class="active"><a href="/upload">Upload</a></li>
+
+        <li ><a href="/">Home</a></li>
+      </ul>
+    </div>
+    <br class="clear" />
+  </div>
+</div>
+<!-- ####################################################################################################### -->
+<div class="wrapper col2">
+  <div id="intro">
+    <div class="fl_left">
+      <h1>upload your image&hellip;</h1>
+      <form action='/predict' method='post' enctype='multipart/form-data'>
+        <input type='file' name='image'>
+        <input type='submit' value='Submit'>
+    </form>
+    
+    </div>
+    <div class="fl_right">
+      <ul id="rotation">
+        <li><a href="#"><img src="static/input1.jpg" alt="" /></a></li>
+        <li><a href="#"><img src="static/input2.jpg" alt="" /></a></li>
+        <li><a href="#"><img src="static/input3.jpg" alt="" /></a></li>
+      </ul>
+    </div>
+    <br class="clear" />
+  </div>
+</div>
+<!-- ####################################################################################################### -->
+
+<!-- ####################################################################################################### -->
+
+
+</body>
+</html>

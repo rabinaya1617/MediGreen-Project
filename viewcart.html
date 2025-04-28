@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+
+* {
+ 
+  
+  font-family: "Poppins", sans-serif;
+}
+        body {
+            background-image: url("static/etrading.jpg");
+            background-repeat: no-repeat;
+            background-size: cover;
+            height: auto;
+            
+        }
+        
+        a {
+            margin: 10px 0;
+            color: #007bff;
+            text-decoration: none;
+        }
+    
+        h1 {
+            margin: 20px 0;
+            text-align: center;
+        }
+    
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            border: 1px solid black;
+            backdrop-filter: blur(10px);
+        }
+    
+        th, td {
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+            text-align: left;
+            border: 1px solid black;
+            font-size: 20px;
+            font-weight: bold;
+            color: white;
+        
+        }
+    
+        th {
+            background-color: #000000;
+            padding: 10px;
+            color: rgb(255, 0, 0);
+        }
+        button{
+            padding: 8px;
+            border: none;
+            border-radius: 5px;
+            background-color: cyan;
+            color: black;
+            font-weight: bold;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <a href="/etrading"><button>Back</button></a>
+    <h1>MY CART</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Product Name</th>
+                <th>Product Price</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for record in records %}
+            <tr>
+                <td>{{ record[0] }}</td>
+                <td>{{ record[1] }}</td>
+                <td>{{ record[2] }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

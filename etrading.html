@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+    <style>
+         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+
+* {
+ 
+  
+  font-family: "Poppins", sans-serif;
+}
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-image: url("static/etrading.jpg");
+        
+        background-repeat: no-repeat;
+        background-size: cover;
+        height: auto;
+}
+.container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+
+}
+
+.sidebar {
+    display: none;
+        position: absolute;
+        top: 10px; /* Adjust the top position as needed */
+        left: 65px;
+        background-color: transparent;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        z-index: 1;
+        backdrop-filter: blur(10px);
+    
+}
+.sidebar a{
+    display: block;
+        margin-bottom: 5px; /* Adjust the gap between links as needed */
+        text-decoration: none;
+        color: #000000;
+        font-weight: bold;
+    
+}
+.sidebar a:hover {
+        color: #fc2b2b;
+    }
+.products {
+    width: 80%;
+    padding: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between; /* Distribute items evenly */
+}
+.product {
+    width: calc(33.33% - 20px); 
+    margin: 10px;
+    border: 1px solid #cccccc;
+    padding: 15px;
+    box-sizing: border-box;
+    background-color: transparent;
+    backdrop-filter: blur(10px);
+    text-align: center;
+    font-weight: bold;
+    font-size: 20px;
+    color: navajowhite;
+    
+}
+.product img {
+    max-width: 50%;
+    height: auto;
+    display: block; /* Remove any extra spacing */
+    margin: auto; /* Center the image horizontally */
+}
+.record-set {
+    display: flex;
+    flex-wrap: wrap;
+}
+ h1{
+    text-align: center;
+    font-size: 35px;
+    color: #fc2b2b;
+}
+button{
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    padding: 10px;
+    background-color: #f7b1b1;
+    border: none;
+    border-radius: 5px;
+    color: black;
+    font-weight: bold;
+    cursor: pointer;
+}
+button:hover{
+    background-color:#ccc;
+}
+
+    </style>
+</head>
+<body>
+    <h1>Products</h1>
+    <button id="menuButton">Menu</button>
+    <div class="container">
+    <div class="sidebar" style="display: none;">
+        <a href="/plant_medi">Products</a><br>
+        <a href="/viewcart">View Cart</a><br>
+        <a href="/">Logout</a><br>
+        <a href="/index">Back</a><br>
+        
+
+    </div>
+    <div class="products">
+     
+     <div class="record-set">
+    {% for record in records %}
+    <div class="product">
+    <div class="product-details">
+        <p><img src="data:image/png;base64,{{ record[0] }}" alt="Uploaded Image"></p>
+        <p>Product Name:{{ record[1] }}</p>
+        <p>Price:{{ record[2] }}</p>
+        <p>Description:{{ record[3] }}</p>
+        
+        <a href="/add_to_cart" class="add-to-cart"   data-product-name="{{ record[1] }}" data-product-price="{{ record[2] }}" data-product-brand="{{ record[3] }}">Add to Cart</a>
+    </div>
+</div>
+    {% endfor %} 
+</div>
+</div>
+</div>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // Get all "add cart" links
+            var addToCartLinks = document.querySelectorAll('.add-to-cart');
+    
+            // Add click event listener to each "add cart" link
+            addToCartLinks.forEach(function(link) {
+                link.addEventListener('click', function(event) {
+                    event.preventDefault(); // Prevent default link behavior
+    
+                    // Extract product data from data attributes
+                    
+                    var productName = this.getAttribute('data-product-name');
+                    var productPrice = this.getAttribute('data-product-price');
+                    var productBrand = this.getAttribute('data-product-brand');
+                    
+    
+                    // Send an AJAX request to the server with product data
+                    var xhr = new XMLHttpRequest();
+                    xhr.open('POST', '/add_to_cart', true);
+                    xhr.setRequestHeader('Content-Type', 'application/json');
+                    xhr.onreadystatechange = function() {
+                        if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
+                            console.log('Product added to cart successfully.');
+                        }
+                    };
+                    var data = JSON.stringify({
+                        
+                        productName: productName,
+                        productPrice: productPrice,
+                        productBrand: productBrand
+                        
+                    });
+                    xhr.send(data);
+                });
+            });
+        });
+    </script>
+<script>
+    document.getElementById("menuButton").addEventListener("click", function() {
+        var sidebar = document.querySelector(".sidebar");
+        if (sidebar.style.display === "none") {
+            sidebar.style.display = "block";
+        } else {
+            sidebar.style.display = "none";
+        }
+    });
+    </script>
+</body>
+</html>
